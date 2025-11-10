@@ -1,4 +1,4 @@
-import uuid, json
+import json
 import redis
 from django.utils import timezone
 from rest_framework import viewsets, status
@@ -45,7 +45,6 @@ class NotificationViewSet(viewsets.ModelViewSet):
                 )
 
         notification = Notification.objects.create(
-            id=str(uuid.uuid4()),
             recipient_id=data["recipient_id"],
             recipient_type=data["recipient_type"],
             channel=data["channel"],

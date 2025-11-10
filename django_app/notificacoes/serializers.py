@@ -5,4 +5,4 @@ from .models import Notification
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
-        fields = "all"
+        fields = "__all__"

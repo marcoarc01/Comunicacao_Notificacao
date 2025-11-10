@@ -1,7 +1,9 @@
 from django.db import models
+import uuid
+
 
 class Notification(models.Model):
-    id = models.CharField(max_length=50, primary_key=True)
+    id = models.CharField(primary_key=True, max_length=50, default=uuid.uuid4, editable=False)
     recipient_id = models.CharField(max_length=50)
     recipient_type = models.CharField(max_length=20,
         choices=[
