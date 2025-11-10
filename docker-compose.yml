@@ -40,5 +40,20 @@ services:
     ports:
       - "6379:6379"
 
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: comunicacao_worker
+    command: python worker.py
+    volumes:
+      - ./django_app:/app
+    depends_on:
+      - redis
+      - db
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: always
+
 volumes:
   postgres_data:
